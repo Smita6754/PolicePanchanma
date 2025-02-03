@@ -51,7 +51,7 @@ public class VillageData {
     private String cirmname;
 
     @Column(nullable = false)
-    private BigInteger ccode;
+    private String ccode;
 
     @Column(nullable = false)
     private int lgd_code;
@@ -154,11 +154,11 @@ public class VillageData {
 		this.id = id;
 	}
 
-	public BigInteger getCcode() {
+	public String getCcode() {
 		return ccode;
 	}
 
-	public void setCcode(BigInteger ccode) {
+	public void setCcode(String ccode) {
 		this.ccode = ccode;
 	}
 

@@ -9,6 +9,7 @@ import com.panchanama.entity.VillageData;
 import com.panchanama.service.VillageDataService;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -33,18 +34,33 @@ public class VillageDataController {
         return villageDataService.getDataByThncode(thncode);
     }
     
+//    @GetMapping("/districts/{dvncode}")
+//    public List<String> getDistrictsByDivision(@PathVariable int dvncode) {
+//        return villageDataService.getDistrictsByDivision(dvncode);
+//    }
+//
+//    @GetMapping("/talukas/{dtncode}")
+//    public List<String> getTalukasByDistrict(@PathVariable int dtncode) {
+//        return villageDataService.getTalukasByDistrict(dtncode);
+//    }
+//
+//    @GetMapping("/villages/{thncode}")
+//    public List<String> getVillagesByTaluka(@PathVariable int thncode) {
+//        return villageDataService.getVillagesByTaluka(thncode);
+//    }
+    
     @GetMapping("/districts/{dvncode}")
-    public List<String> getDistrictsByDivision(@PathVariable int dvncode) {
+    public List<Map<String, Object>> getDistrictsByDivision(@PathVariable int dvncode) {
         return villageDataService.getDistrictsByDivision(dvncode);
     }
 
     @GetMapping("/talukas/{dtncode}")
-    public List<String> getTalukasByDistrict(@PathVariable int dtncode) {
+    public List<Map<String, Object>> getTalukasByDistrict(@PathVariable int dtncode) {
         return villageDataService.getTalukasByDistrict(dtncode);
     }
 
     @GetMapping("/villages/{thncode}")
-    public List<String> getVillagesByTaluka(@PathVariable int thncode) {
+    public List<Map<String, Object>> getVillagesByTaluka(@PathVariable int thncode) {
         return villageDataService.getVillagesByTaluka(thncode);
     }
 }
