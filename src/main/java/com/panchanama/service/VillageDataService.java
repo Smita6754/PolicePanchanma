@@ -43,6 +43,10 @@ public class VillageDataService {
     public List<Map<String, Object>> getDistrictsByDivision(int dvncode) {
         return villageDataRepository.getDistrictsByDivision(dvncode);
     }
+    
+    public List<Map<String, Object>> getAllDistricts() {
+        return villageDataRepository.getAllDistricts();
+    }
 
     public List<Map<String, Object>> getTalukasByDistrict(int dtncode) {
         return villageDataRepository.getTalukasByDistrict(dtncode);

@@ -13,9 +13,6 @@ import com.panchanama.entity.VillageData;
 public interface VillageDataRepository extends JpaRepository<VillageData, Integer> {
     // Add custom queries here if needed
 	
-//	@Query(value = "SELECT * FROM village_data vd WHERE vd.dvncode = :divId", nativeQuery = true)
-//	List<VillageData> getAllDistrictByDivId(@Param("divId") Integer divId);
-	
 	List<VillageData> findByDvncode(int dvncode);
     List<VillageData> findByDtncode(int dtncode);
     List<VillageData> findByThncode(int thncode);
@@ -31,6 +28,9 @@ public interface VillageDataRepository extends JpaRepository<VillageData, Intege
 //    
     @Query("SELECT DISTINCT new map(lgd_dtncode as code, dtename as name) FROM VillageData WHERE dvncode = :dvncode")
     List<Map<String, Object>> getDistrictsByDivision(@Param("dvncode") int dvncode);
+    
+    @Query("SELECT DISTINCT new map(lgd_dtncode as code, dtename as name) FROM VillageData")
+    List<Map<String, Object>> getAllDistricts();
 
     @Query("SELECT DISTINCT new map(lgd_thncode as code, thename as name) FROM VillageData WHERE lgd_dtncode = :lgd_dtncode")
     List<Map<String, Object>> getTalukasByDistrict(@Param("lgd_dtncode") int lgd_dtncode);

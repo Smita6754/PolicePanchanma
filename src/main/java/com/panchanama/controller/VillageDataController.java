@@ -53,6 +53,11 @@ public class VillageDataController {
     public List<Map<String, Object>> getDistrictsByDivision(@PathVariable int dvncode) {
         return villageDataService.getDistrictsByDivision(dvncode);
     }
+    
+    @GetMapping("/districts")
+    public List<Map<String, Object>> getAllDistricts() {
+        return villageDataService.getAllDistricts();
+    }
 
     @GetMapping("/talukas/{dtncode}")
     public List<Map<String, Object>> getTalukasByDistrict(@PathVariable int dtncode) {
