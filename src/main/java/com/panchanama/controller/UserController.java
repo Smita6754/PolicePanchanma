@@ -3,10 +3,12 @@ package com.panchanama.controller;
 import com.panchanama.entity.User;
 import com.panchanama.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
@@ -42,6 +44,17 @@ public class UserController {
             return ResponseEntity.ok(user);
         }
         return ResponseEntity.notFound().build();
+    }
+    
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, Object>> login(@RequestParam String email,
+                                                     @RequestParam String password) {
+        Map<String, Object> result = userService.validateUser(email, password);
+
+        int code = (int) result.get("code");
+        HttpStatus status = (code == 200) ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
+
+        return new ResponseEntity<>(result, status);
     }
 }
 

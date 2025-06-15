@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface UserRepository extends JpaRepository<User, Integer> {
     // Custom query if needed
     User findByEmail(String email);
+    User findByEmailAndPassword(String email, String password);
+
 }

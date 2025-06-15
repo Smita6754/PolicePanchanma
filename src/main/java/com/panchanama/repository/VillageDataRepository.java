@@ -26,16 +26,16 @@ public interface VillageDataRepository extends JpaRepository<VillageData, Intege
 //    @Query("SELECT DISTINCT villname FROM VillageData WHERE lgd_thncode = :lgd_thncode")
 //    List<String> getVillagesByTaluka(@Param("lgd_thncode") int lgd_thncode);
 //    
-    @Query("SELECT DISTINCT new map(lgd_dtncode as code, dtename as name) FROM VillageData WHERE dvncode = :dvncode")
+    @Query("SELECT DISTINCT new map(lgd_dtncode as code, dtename as name) FROM VillageData WHERE dvncode = :dvncode ORDER BY dtename ASC")
     List<Map<String, Object>> getDistrictsByDivision(@Param("dvncode") int dvncode);
     
-    @Query("SELECT DISTINCT new map(lgd_dtncode as code, dtename as name) FROM VillageData")
+    @Query("SELECT DISTINCT new map(lgd_dtncode as code, dtename as name) FROM VillageData ORDER BY dtename ASC")
     List<Map<String, Object>> getAllDistricts();
 
-    @Query("SELECT DISTINCT new map(lgd_thncode as code, thename as name) FROM VillageData WHERE lgd_dtncode = :lgd_dtncode")
+    @Query("SELECT DISTINCT new map(lgd_thncode as code, thename as name) FROM VillageData WHERE lgd_dtncode = :lgd_dtncode ORDER BY thename ASC")
     List<Map<String, Object>> getTalukasByDistrict(@Param("lgd_dtncode") int lgd_dtncode);
 
-    @Query("SELECT DISTINCT new map(lgd_code as code, villname as name) FROM VillageData WHERE lgd_thncode = :lgd_thncode")
+    @Query("SELECT DISTINCT new map(lgd_code as code, villname as name) FROM VillageData WHERE lgd_thncode = :lgd_thncode ORDER BY villname ASC")
     List<Map<String, Object>> getVillagesByTaluka(@Param("lgd_thncode") int lgd_thncode);
     
 }
